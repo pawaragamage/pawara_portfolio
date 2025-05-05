@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portfolio | Electro-mechanical Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Your existing styles */
+        
+        /* Project Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .project-modal {
+            background-color: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transform: translateY(-30px);
+            transition: all 0.4s ease;
+        }
+        
+        .modal-overlay.active .project-modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            position: relative;
+            padding: 0;
+        }
+        
+        .modal-header img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background-color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+        
+        .modal-content {
+            padding: 30px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .modal-section h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .tech-item i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .project-modal {
+                width: 95%;
+            }
+            
+            .modal-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Modal Container -->
+    <div class="modal-overlay" id="project-modal-overlay">
+        <div class="project-modal">
+            <div class="modal-header">
+                <img src="/api/placeholder/900/400" alt="Project Header" id="modal-header-img">
+                <div class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-content">
+                <h2 class="modal-title" id="modal-title">Project Title</h2>
+                <h3 class="modal-subtitle" id="modal-subtitle">Project Subtitle</h3>
+                
+                <div class="modal-section">
+                    <p class="modal-description" id="modal-description">
+                        Project description will be loaded here dynamically.
+                    </p>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Technologies Used</h4>
+                    <div class="tech-stack" id="modal-tech-stack">
+                        <!-- Tech stack items will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Key Features</h4>
+                    <ul id="modal-features">
+                        <!-- Features will be loaded here -->
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>Project Gallery</h4>
+                    <div class="gallery" id="modal-gallery">
+                        <!-- Gallery items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this JavaScript code right before the closing body tag -->
+    <script>
+        // Project data (in a real application, this might be loaded from a JSON file or an API)
+        const projectsData = [
+            {
+                id: "project1",
+                title: "Automated Material Handling System",
+                subtitle: "Industrial Automation Solution",
+                description: "This project focused on creating an efficient material handling system for a manufacturing environment. The system uses PLC control to automate the movement of materials through multiple stations, improving manufacturing throughput and reducing manual handling requirements.",
+                techStack: [
+                    { icon: "fa-microchip", name: "PLC Programming" },
+                    { icon: "fa-wind", name: "Pneumatic Systems" },
+                    { icon: "fa-cogs", name: "Automation" },
+                    { icon: "fa-drafting-compass", name: "CAD Design" }
+                ],
+                features: [
+                    "Automated sequential control of workstations",
+                    "Pneumatic gripper system for precise material handling",
+                    "HMI interface for operator control and monitoring",
+                    "Safety systems including light curtains and emergency stops",
+                    "Data collection for process optimization"
+                ],
+                headerImage: "/api/placeholder/900/400?text=Material+Handling+System",
+                gallery: [
+                    "/api/placeholder/400/300?text=Control+Panel",
+                    "/api/placeholder/400/300?text=Pneumatic+System",
+                    "/api/placeholder/400/300?text=Conveyor+Setup",
+                    "/api/placeholder/400/300?text=HMI+Interface"
+                ]
+            },
+            {
+                id: "project2",
+                title: "Energy Efficient HVAC Control System",
+                subtitle: "Smart Building Technology",
+                description: "Developed an advanced HVAC control system that uses a network of sensors and machine learning algorithms to optimize energy usage while maintaining optimal comfort levels throughout different zones of a building. The system continuously learns from usage patterns and adjusts its operation accordingly.",
+                techStack: [
+                    { icon: "fa-microchip", name: "IoT Sensors" },
+                    { icon: "fa-brain", name: "Machine Learning" },
+                    { icon: "fa-project-diagram", name: "Network Architecture" },
+                    { icon: "fa-chart-line", name: "Data Analytics" }
+                ],
+                features: [
+                    "Real-time temperature and humidity monitoring across multiple zones",
+                    "Predictive algorithms for efficient temperature management",
+                    "User preference learning for personalized comfort profiles",
+                    "Mobile app for remote monitoring and control",
+                    "Energy consumption analytics and reporting dashboard"
+                ],
+                headerImage: "/api/placeholder/900/400?text=HVAC+Control+System",
+                gallery: [
+                    "/api/placeholder/400/300?text=Sensor+Network",
+                    "/api/placeholder/400/300?text=Control+Interface",
+                    "/api/placeholder/400/300?text=Mobile+App",
+                    "/api/placeholder/400/300?text=Temperature+Mapping"
+                ]
+            },
+            {
+                id: "project3",
+                title: "Robotic Arm with Computer Vision",
+                subtitle: "Advanced Robotics Project",
+                description: "This project involved building a 5-axis robotic arm with computer vision capabilities for automated sorting and assembly tasks. The system uses cameras to identify objects, calculate their position, and then uses inverse kinematics to precisely manipulate them.",
+                techStack: [
+                    { icon: "fa-robot", name: "Robotics" },
+                    { icon: "fa-eye", name: "Computer Vision" },
+                    { icon: "fa-cog", name: "Servo Control" },
+                    { icon: "fa-code", name: "Python Programming" }
+                ],
+                features: [
+                    "Object recognition and classification using OpenCV",
+                    "Precise movement control through inverse kinematics algorithms",
+                    "Custom-designed 3D printed components for optimal weight/strength ratio",
+                    "Real-time visual feedback system for position verification",
+                    "Programmable movement patterns for various tasks"
+                ],
+                headerImage: "/api/placeholder/900/400?text=Robotic+Arm",
+                gallery: [
+                    "/api/placeholder/400/300?text=Arm+Structure",
+                    "/api/placeholder/400/300?text=Vision+System",
+                    "/api/placeholder/400/300?text=End+Effector",
+                    "/api/placeholder/400/300?text=Control+System"
+                ]
+            },
+            {
+                id: "project4",
+                title: "Smart Grid Simulation Model",
+                subtitle: "Energy Distribution Optimization",
+                description: "Created a detailed simulation model for smart grid operations to analyze power flow and optimize energy distribution with renewable energy integration. This model helps utility companies identify potential issues and opportunities in their distribution networks.",
+                techStack: [
+                    { icon: "fa-square-root-alt", name: "MATLAB" },
+                    { icon: "fa-sitemap", name: "Simulink" },
+                    { icon: "fa-bolt", name: "Power Systems" },
+                    { icon: "fa-solar-panel", name: "Renewable Energy" }
+                ],
+                features: [
+                    "Multi-node power distribution simulation",
+                    "Integration of variable renewable energy sources",
+                    "Load balancing algorithms for optimal distribution",
+                    "Fault analysis and resilience testing capabilities",
+                    "Economic analysis of different distribution strategies"
+                ],
+                headerImage: "/api/placeholder/900/400?text=Smart+Grid+Simulation",
+                gallery: [
+                    "/api/placeholder/400/300?text=Simulation+Interface",
+                    "/api/placeholder/400/300?text=Grid+Layout",
+                    "/api/placeholder/400/300?text=Power+Flow+Analysis",
+                    "/api/placeholder/400/300?text=Renewable+Integration"
+                ]
+            },
+            {
+                id: "project5",
+                title: "Electric Vehicle Battery Management System",
+                subtitle: "EV Power System",
+                description: "Designed a comprehensive battery management system for electric vehicles that monitors cell health, optimizes charging cycles, and extends battery life through intelligent control algorithms. The system provides detailed diagnostics and status information to both drivers and maintenance personnel.",
+                techStack: [
+                    { icon: "fa-car-battery", name: "BMS Design" },
+                    { icon: "fa-microchip", name: "PCB Design" },
+                    { icon: "fa-memory", name: "Embedded Systems" },
+                    { icon: "fa-code", name: "C++ Programming" }
+                ],
+                features: [
+                    "Real-time monitoring of individual cell voltages and temperatures",
+                    "Advanced balancing system for optimal charge distribution",
+                    "Thermal management system integration",
+                    "Diagnostic system with predictive maintenance alerts",
+                    "Data logging and performance analysis capabilities"
+                ],
+                headerImage: "/api/placeholder/900/400?text=EV+Battery+Management",
+                gallery: [
+                    "/api/placeholder/400/300?text=PCB+Design",
+                    "/api/placeholder/400/300?text=System+Integration",
+                    "/api/placeholder/400/300?text=Diagnostic+Interface",
+                    "/api/placeholder/400/300?text=Temperature+Mapping"
+                ]
+            },
+            {
+                id: "project6",
+                title: "CNC Machine Retrofit Project",
+                subtitle: "Manufacturing Modernization",
+                description: "Retrofitted an old manual milling machine with CNC capabilities, designing the control electronics and implementing G-code interpreter for precise manufacturing. This project gave new life to outdated equipment, providing modern manufacturing capabilities at a fraction of the cost of a new machine.",
+                techStack: [
+                    { icon: "fa-cube", name: "CNC Technology" },
+                    { icon: "fa-cogs", name: "Stepper Motors" },
+                    { icon: "fa-code", name: "G-code Implementation" },
+                    { icon: "fa-industry", name: "Manufacturing" }
+                ],
+                features: [
+                    "Custom-designed controller board for stepper motor control",
+                    "Integrated limit switches and safety systems",
+                    "Open-source G-code interpreter implementation",
+                    "User-friendly control interface for machine operation",
+                    "Precision improvements over the original manual system"
+                ],
+                headerImage: "/api/placeholder/900/400?text=CNC+Retrofit",
+                gallery: [
+                    "/api/placeholder/400/300?text=Original+Machine",
+                    "/api/placeholder/400/300?text=Control+Electronics",
+                    "/api/placeholder/400/300?text=Motor+Installation",
+                    "/api/placeholder/400/300?text=Finished+System"
+                ]
+            }
+        ];
+
+        // Get DOM elements
+        const modalOverlay = document.getElementById('project-modal-overlay');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+        const modalDescription = document.getElementById('modal-description');
+        const modalTechStack = document.getElementById('modal-tech-stack');
+        const modalFeatures = document.getElementById('modal-features');
+        const modalHeaderImg = document.getElementById('modal-header-img');
+        const modalGallery = document.getElementById('modal-gallery');
+
+        // Function to open modal with project data
+        function openProjectModal(projectId) {
+            // Find the project data
+            const project = projectsData.find(p => p.id === projectId);
+            
+            if (!project) return;
+            
+            // Populate modal with project data
+            modalTitle.textContent = project.title;
+            modalSubtitle.textContent = project.subtitle;
+            modalDescription.textContent = project.description;
+            modalHeaderImg.src = project.headerImage;
+            
+            // Populate tech stack
+            modalTechStack.innerHTML = '';
+            project.techStack.forEach(tech => {
+                const techItem = document.createElement('div');
+                techItem.className = 'tech-item';
+                techItem.innerHTML = `<i class="fas ${tech.icon}"></i> ${tech.name}`;
+                modalTechStack.appendChild(techItem);
+            });
+            
+            // Populate features
+            modalFeatures.innerHTML = '';
+            project.features.forEach(feature => {
+                const listItem = document.createElement('li');
+                listItem.textContent = feature;
+                modalFeatures.appendChild(listItem);
+            });
+            
+            // Populate gallery
+            modalGallery.innerHTML = '';
+            project.gallery.forEach(imgSrc => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `<img src="${imgSrc}" alt="Project Image">`;
+                modalGallery.appendChild(galleryItem);
+            });
+            
+            // Show modal
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+        }
+
+        // Close modal function
+        function closeProjectModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+
+        // Event listener for close button
+        modalClose.addEventListener('click', closeProjectModal);
+
+        // Close modal when clicking outside of it
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeProjectModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeProjectModal();
+            }
+        });
+
+        // Update your existing "View Project" links
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            // Add data-id attribute to each project card
+            projectCards.forEach((card, index) => {
+                card.setAttribute('data-id', `project${index + 1}`);
+                
+                // Find the "View Project" link in this card
+                const viewProjectLink = card.querySelector('.project-link:first-child');
+                if (viewProjectLink) {
+                    // Remove the existing href attribute
+                    viewProjectLink.removeAttribute('href');
+                    
+                    // Add click event listener
+                    viewProjectLink.addEventListener('click', () => {
+                        openProjectModal(`project${index + 1}`);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
