@@ -1093,7 +1093,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="/api/placeholder/600/600" alt="Profile Image">
+                    <img src="profile1.jpeg" alt="Profile Image">
                 </div>
                 <div class="about-text">
                     <h3>Hello! I'm Pawara Gamage</h3>
@@ -1184,7 +1184,7 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="/api/placeholder/600/400" alt="Project 2">
+                        <img src="P2 (5).jpg" alt="Project 2">
                     </div>
                     <div class="project-content">
                         <h3>Eco Bot: Autonomous Greenhouse Robot</h3>
@@ -1205,7 +1205,7 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="/api/placeholder/600/400" alt="Project 3">
+                        <img src="P3 (6).jpg" alt="Project 3">
                     </div>
                     <div class="project-content">
                         <h3>Protected House Monitoring and Automation System</h3>
@@ -1612,9 +1612,14 @@
         
         // CV Download Functionality
         document.getElementById('download-cv').addEventListener('click', function(e) {
-            e.preventDefault();
-            // In a real application, this would download the CV file
-            alert('CV download feature will be implemented here. Connect this to your actual CV file.');
+            e.preventDefault(); // Prevent default link behavior
+            const cvUrl = '/assets/cv.pdf'; // Replace with your actual CV file path or URL
+            const link = document.createElement('a');
+            link.href = cvUrl;
+            link.download = 'Pawara_Gamage_undergraduate.pdf'; // Optional: specify the downloaded file name
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link); // Clean up
         });
         
         // Form submission handling
@@ -1772,98 +1777,103 @@
             {
                 id: "project1",
                 title: "Smart Agriculture Server Setup",
-                subtitle: "",
-                description: "Server Infrastructure Setup for Agricultural Innovation at the Faculty of Agriculture, University of Ruhuna.",
+                subtitle: "A Scalable and Secure Infrastructure for Greenhouse Automation and Remote Monitoring",
+                description: "The Smart Agriculture Server Setup at the University of Ruhuna creates a powerful, scalable server for real-time greenhouse monitoring and control of temperature, humidity, and soil moisture. Using Proxmox VE for virtual machines, Python for programming, and ESP32 microcontrollers, the system supports local and remote access via secure IP. It features 32GB RAM, SSD, and HDD storage, enabling future IoT and AI integration to enhance smart farming and sustainability.",               
                 techStack: [
-                    { icon: "fa-microchip", name: "PLC Programming" },
-                    { icon: "fa-wind", name: "Pneumatic Systems" },
-                    { icon: "fa-cogs", name: "Automation" },
-                    { icon: "fa-drafting-compass", name: "CAD Design" }
+                    { icon: "fa-server", name: "Proxmox VE" },
+                    { icon: "fa-microchip", name: "ESP32 Microcontroller" },
+                    { icon: "fa-code", name: "Python Programming" },
+                    { icon: "fa-network-wired", name: "Local & Remote IP Hosting" },
+                    { icon: "fa-hdd", name: "High-Performance Storage" }
                 ],
                 features: [
-                    "Automated sequential control of workstations",
-                    "Pneumatic gripper system for precise material handling",
-                    "HMI interface for operator control and monitoring",
-                    "Safety systems including light curtains and emergency stops",
-                    "Data collection for process optimization"
+                    "Real-time monitoring of temperature, humidity, and soil moisture",
+                    "Local and remote server access via secure IP",
+                    "Virtual machine management using Proxmox VE for scalability",
+                    "Integration with ESP32 microcontrollers for sensor control",
+                    "Scalable architecture supporting future IoT and AI expansions"
                 ],
+
                 headerImage: "1745353829784.jpeg",
                 gallery: [
-                    "/api/placeholder/400/300?text=Control+Panel",
-                    "/api/placeholder/400/300?text=Pneumatic+System",
-                    "/api/placeholder/400/300?text=Conveyor+Setup",
-                    "/api/placeholder/400/300?text=HMI+Interface"
+                    "P1 (1).jpg",
+                    "P1 (2).jpg",
+                    "P1 (3).jpg",
+                    "P1 (4).jpg"
                 ]
             },
             {
                 id: "project2",
-                title: "Energy Efficient HVAC Control System",
-                subtitle: "Smart Building Technology",
-                description: "Developed an advanced HVAC control system that uses a network of sensors and machine learning algorithms to optimize energy usage while maintaining optimal comfort levels throughout different zones of a building. The system continuously learns from usage patterns and adjusts its operation accordingly.",
+                title: "Eco Bot: AI-Driven Autonomous Greenhouse Robot",
+                subtitle: "Precision Agriculture & Smart Greenhouse Technology",
+                description: "Eco Bot is an AI-powered autonomous robot designed for greenhouses. It uses computer vision (YOLO model) and sensors to monitor plant health, soil moisture, temperature, and humidity in real-time. The system analyzes data, suggests care actions, and predicts plant health to enable precise and efficient plant care, reducing manual labor and promoting sustainable farming.",
                 techStack: [
-                    { icon: "fa-microchip", name: "IoT Sensors" },
-                    { icon: "fa-brain", name: "Machine Learning" },
-                    { icon: "fa-project-diagram", name: "Network Architecture" },
-                    { icon: "fa-chart-line", name: "Data Analytics" }
+                    { icon: "fa-raspberry-pi", name: "Raspberry Pi 4B" },
+                    { icon: "fa-camera", name: "Camera Module" },
+                    { icon: "fa-microchip", name: "Sensors" },
+                    { icon: "fa-robot", name: "ROS2" },
+                    { icon: "fa-print", name: "3D Printing" }
                 ],
                 features: [
-                    "Real-time temperature and humidity monitoring across multiple zones",
-                    "Predictive algorithms for efficient temperature management",
-                    "User preference learning for personalized comfort profiles",
-                    "Mobile app for remote monitoring and control",
-                    "Energy consumption analytics and reporting dashboard"
+                    "Real-time plant identification using YOLO model",
+                    "Soil moisture, temperature & humidity monitoring",
+                    "Autonomous robotic arm for precise plant care",
+                    "Web application for data visualization and control",
+                    "Predictive insights for plant health optimization"
                 ],
-                headerImage: "/api/placeholder/900/400?text=HVAC+Control+System",
+                headerImage: "P2 (5).jpg",
                 gallery: [
-                    "/api/placeholder/400/300?text=Sensor+Network",
-                    "/api/placeholder/400/300?text=Control+Interface",
-                    "/api/placeholder/400/300?text=Mobile+App",
-                    "/api/placeholder/400/300?text=Temperature+Mapping"
+                    "P2 (1).jpg",
+                    "P2 (2).jpg",
+                    "P2 (3).jpg",
+                    "P2 (4).jpg",
+                    "P2 (6).jpg"
                 ]
             },
             {
                 id: "project3",
-                title: "Robotic Arm with Computer Vision",
-                subtitle: "Advanced Robotics Project",
-                description: "This project involved building a 5-axis robotic arm with computer vision capabilities for automated sorting and assembly tasks. The system uses cameras to identify objects, calculate their position, and then uses inverse kinematics to precisely manipulate them.",
+                title: "Protected House Monitoring and Automation System",
+                subtitle: "Smart Agriculture IoT Project",
+                description: "We developed a Protected House Monitoring and Automation System using ESP32 and sensors to improve plant care at Siddhartha College, Weligama. The system automatically waters plants based on soil moisture and allows manual control of temperature and irrigation through a mobile app. It includes real-time monitoring of humidity and temperature for optimal growth conditions. This IoT solution promotes smart farming by combining automation with easy remote management.",
                 techStack: [
-                    { icon: "fa-robot", name: "Robotics" },
-                    { icon: "fa-eye", name: "Computer Vision" },
-                    { icon: "fa-cog", name: "Servo Control" },
-                    { icon: "fa-code", name: "Python Programming" }
+                    { icon: "fa-microchip", name: "ESP32" },
+                    { icon: "fa-tint", name: "Soil Moisture Sensors" },
+                    { icon: "fa-thermometer-half", name: "Temperature & Humidity Sensors" },
+                    { icon: "fa-mobile-alt", name: "Mobile App Control" }
                 ],
                 features: [
-                    "Object recognition and classification using OpenCV",
-                    "Precise movement control through inverse kinematics algorithms",
-                    "Custom-designed 3D printed components for optimal weight/strength ratio",
-                    "Real-time visual feedback system for position verification",
-                    "Programmable movement patterns for various tasks"
+                    "Automatic plant watering based on soil moisture levels",
+                    "Manual control of water and temperature through mobile app",
+                    "Real-time environmental monitoring for optimal plant growth",
+                    "Integration of solenoid valves for precise irrigation control",
+                    "Wi-Fi connectivity enabling remote system management"
                 ],
-                headerImage: "/api/placeholder/900/400?text=Robotic+Arm",
+                headerImage: "P3 (6).jpg",
                 gallery: [
-                    "/api/placeholder/400/300?text=Arm+Structure",
-                    "/api/placeholder/400/300?text=Vision+System",
-                    "/api/placeholder/400/300?text=End+Effector",
-                    "/api/placeholder/400/300?text=Control+System"
+                    "P3 (1).jpg",
+                    "P3 (2).jpg",
+                    "P3 (3).jpg",
+                    "P3 (4).jpg",
+                    "P3 (5).jpg"
                 ]
             },
             {
                 id: "project4",
-                title: "Smart Grid Simulation Model",
-                subtitle: "Energy Distribution Optimization",
-                description: "Created a detailed simulation model for smart grid operations to analyze power flow and optimize energy distribution with renewable energy integration. This model helps utility companies identify potential issues and opportunities in their distribution networks.",
+                title: "Line Following Robot with PID Control",
+                subtitle: "Smooth Path Tracking with Real-Time PID Tuning",
+                description: "We developed a line following robot powered by an ESP32 microcontroller, equipped with N20 motors featuring encoders for precise speed feedback. The robot uses a TB6612FNG motor controller and a line following sensor array to detect and follow paths accurately. A PID control algorithm ensures smooth turning and stability. A locally hosted web server allows real-time tuning of PID parameters while the robot is running. The chassis is custom-designed on a PCB, and power management is handled by an LM2596 step-down module paired with a LiPo battery pack. This project combines embedded systems, control theory, and web technologies for a smart robotic solution.",
                 techStack: [
-                    { icon: "fa-square-root-alt", name: "MATLAB" },
-                    { icon: "fa-sitemap", name: "Simulink" },
-                    { icon: "fa-bolt", name: "Power Systems" },
-                    { icon: "fa-solar-panel", name: "Renewable Energy" }
+                    { icon: "fa-microchip", name: "ESP32" },
+                    { icon: "fa-cogs", name: "PID Control" },
+                    { icon: "fa-motorcycle", name: "N20 Motors" },
+                    { icon: "fa-network-wired", name: "Web Server" }
                 ],
                 features: [
-                    "Multi-node power distribution simulation",
-                    "Integration of variable renewable energy sources",
-                    "Load balancing algorithms for optimal distribution",
-                    "Fault analysis and resilience testing capabilities",
-                    "Economic analysis of different distribution strategies"
+                    "Real-time PID tuning via local web interface",
+                    "Encoder feedback for precise motor control",
+                    "Custom PCB-based chassis design",
+                    "Smooth and accurate line tracking",
+                    "Power regulation using LM2596 step-down module"
                 ],
                 headerImage: "/api/placeholder/900/400?text=Smart+Grid+Simulation",
                 gallery: [
@@ -1875,21 +1885,22 @@
             },
             {
                 id: "project5",
-                title: "Electric Vehicle Battery Management System",
-                subtitle: "EV Power System",
-                description: "Designed a comprehensive battery management system for electric vehicles that monitors cell health, optimizes charging cycles, and extends battery life through intelligent control algorithms. The system provides detailed diagnostics and status information to both drivers and maintenance personnel.",
+                title: "Autonomous Micromouse Robot",
+                subtitle: "Maze Navigation System",
+                description: "Developed an intelligent micromouse robot that autonomously navigates and solves mazes using advanced sensors and real-time processing with ESP32. The system ensures precise wall detection, smooth motor control, and balance with custom 3D printed components for enhanced performance.",
                 techStack: [
-                    { icon: "fa-car-battery", name: "BMS Design" },
-                    { icon: "fa-microchip", name: "PCB Design" },
-                    { icon: "fa-memory", name: "Embedded Systems" },
+                    { icon: "fa-robot", name: "Robotics" },
+                    { icon: "fa-microchip", name: "ESP32 Controller" },
+                    { icon: "fa-sensor", name: "Sharp Sensors" },
+                    { icon: "fa-cogs", name: "Motor Control (H-Bridge)" },
                     { icon: "fa-code", name: "C++ Programming" }
                 ],
                 features: [
-                    "Real-time monitoring of individual cell voltages and temperatures",
-                    "Advanced balancing system for optimal charge distribution",
-                    "Thermal management system integration",
-                    "Diagnostic system with predictive maintenance alerts",
-                    "Data logging and performance analysis capabilities"
+                    "Precision wall detection using Sharp sensors",
+                    "Accurate movement with N20 motors and encoders",
+                    "Real-time balance control via gyroscope sensor",
+                    "Long-lasting power with LiPo battery",
+                    "Custom parts fabricated through 3D printing"
                 ],
                 headerImage: "/api/placeholder/900/400?text=EV+Battery+Management",
                 gallery: [
@@ -1901,22 +1912,23 @@
             },
             {
                 id: "project6",
-                title: "CNC Machine Retrofit Project",
-                subtitle: "Manufacturing Modernization",
-                description: "Retrofitted an old manual milling machine with CNC capabilities, designing the control electronics and implementing G-code interpreter for precise manufacturing. This project gave new life to outdated equipment, providing modern manufacturing capabilities at a fraction of the cost of a new machine.",
+                title: "Semi-Automatic Spot Welder for Battery Packs",
+                subtitle: "Battery Pack Welding Automation",
+                description: "This project is a semi-automatic spot welder designed for battery pack assembly. It uses a microwave transformer to generate the high current needed for welding. A conveyor system moves the battery packs into position, where sensors detect their presence and trigger the welding process. Servo motors control the movement precisely, while limit switches ensure accurate stopping points and safety. This system improves welding speed, accuracy, and automation for efficient battery pack production.",
                 techStack: [
-                    { icon: "fa-cube", name: "CNC Technology" },
-                    { icon: "fa-cogs", name: "Stepper Motors" },
-                    { icon: "fa-code", name: "G-code Implementation" },
-                    { icon: "fa-industry", name: "Manufacturing" }
+                    { icon: "fa-bolt", name: "High Current Welding" },
+                    { icon: "fa-microchip", name: "Microcontroller Control" },
+                    { icon: "fa-cogs", name: "Servo Motor Control" },
+                    { icon: "fa-ruler-combined", name: "Limit Switches" }
                 ],
                 features: [
-                    "Custom-designed controller board for stepper motor control",
-                    "Integrated limit switches and safety systems",
-                    "Open-source G-code interpreter implementation",
-                    "User-friendly control interface for machine operation",
-                    "Precision improvements over the original manual system"
+                    "Sensor detection for battery pack presence",
+                    "Conveyor system for automatic movement",
+                    "Servo motor driven positioning and control",
+                    "Use of microwave transformer for spot welding",
+                    "Limit switches for safety and precision positioning"
                 ],
+
                 headerImage: "/api/placeholder/900/400?text=CNC+Retrofit",
                 gallery: [
                     "/api/placeholder/400/300?text=Original+Machine",
@@ -1927,22 +1939,22 @@
             },
             {
                 "id": "project7",
-                "title": "Automated Irrigation System",
-                "subtitle": "Smart Agriculture Solution",
-                "description": "Built an IoT-based irrigation system that monitors soil moisture, temperature, and weather conditions to optimize watering schedules. The system reduces water waste by 30% and integrates with a mobile app for remote control and data visualization.",
-                "techStack": [
-                    { "icon": "fa-wifi", "name": "IoT Connectivity" },
-                    { "icon": "fa-microchip", "name": "Microcontrollers" },
-                    { "icon": "fa-leaf", "name": "Environmental Sensors" },
-                    { "icon": "fa-mobile-alt", "name": "Mobile Integration" }
-                ],
-                "features": [
-                    "Real-time soil moisture and weather monitoring",
-                    "Automated valve control for precise irrigation",
-                    "Cloud-based dashboard for data analytics",
-                    "Low-power design for solar compatibility",
-                    "User-friendly mobile app for remote management"
-                ],
+                    "title": "AX1 Motorcycle Repair Project",
+                    "subtitle": "Cooling, Fuel & Electrical System",
+                    "description": "Performed detailed repair on AX1 motorcycle focusing on radiator fan wiring fault causing operation only on left turns. Conducted carburetor tune-up including cleaning and restoring the corroded power jet line to improve fuel delivery. Diagnosed and repaired charging fault by inspecting and rewiring the rectifier and stator connections to ensure stable battery charging and electrical performance.",
+                    "techStack": [
+                        { "icon": "fa-tools", "name": "Mechanical Repair" },
+                        { "icon": "fa-bolt", "name": "Electrical Diagnostics" },
+                        { "icon": "fa-wrench", "name": "Carburetor Tuning" },
+                        { "icon": "fa-cogs", "name": "Wiring & Troubleshooting" }
+                    ],
+                    "features": [
+                        "Radiator fan wiring fault diagnosis and repair",
+                        "Carburetor cleaning and power jet line restoration",
+                        "Rectifier and charging system fault fixing",
+                        "Improved engine performance and reliability",
+                        "Comprehensive mechanical and electrical troubleshooting"
+                    ],
                 "headerImage": "/api/placeholder/900/400?text=Smart+Irrigation",
                 "gallery": [
                     "/api/placeholder/400/300?text=Sensor+Array",
@@ -1953,22 +1965,23 @@
             },
             {
                 "id": "project8",
-                "title": "3D Printed Robotic Arm",
-                "subtitle": "Flexible Automation",
-                "description": "Designed and constructed a 6-degree-of-freedom robotic arm using 3D-printed parts and servo motors. Programmed for pick-and-place tasks, the arm features a custom GUI for real-time control and task automation.",
-                "techStack": [
-                    { "icon": "fa-robot", "name": "Robotics" },
-                    { "icon": "fa-print", "name": "3D Printing" },
-                    { "icon": "fa-cog", "name": "Servo Motors" },
-                    { "icon": "fa-desktop", "name": "Control Interface" }
+                title: "iCloud and FRP Bypass System",
+                subtitle: "Device Unlocking & Security",
+                description: "Performed iCloud bypass on iPhone 5, 6s, 7 Plus, and iPad 4, and FRP bypass on Huawei phones using Silver Mac tools. Manually copied and restored Setup.app data after flashing. Successfully unlocked iPhone 6s with signal restored. The process involved careful file management and flashing to regain device access without full system development.",
+                techStack: [
+                    { icon: "fa-apple", name: "iOS Unlocking" },
+                    { icon: "fa-mobile-alt", name: "Android FRP Bypass" },
+                    { icon: "fa-microchip", name: "Silver Mac Tools" },
+                    { icon: "fa-file-code", name: "Manual Data Restore" }
                 ],
-                "features": [
-                    "6-DOF design for versatile movement",
-                    "Lightweight 3D-printed components for cost efficiency",
-                    "Programmable task sequences for automation",
-                    "Real-time control via custom GUI",
-                    "Modular design for easy upgrades"
+                features: [
+                    "iCloud lock bypass on multiple iPhone models",
+                    "FRP bypass on Huawei Android devices",
+                    "Manual Setup.app data handling for untethered bypass",
+                    "Signal unlock for iPhone 6s after bypass",
+                    "Stable, repeatable unlocking process with data integrity"
                 ],
+
                 "headerImage": "/api/placeholder/900/400?text=Robotic+Arm",
                 "gallery": [
                     "/api/placeholder/400/300?text=3D+Printed+Parts",
@@ -1979,21 +1992,21 @@
             },
             {
                 "id": "project9",
-                "title": "Smart Home Energy Monitor",
-                "subtitle": "Sustainable Living",
-                "description": "Developed a real-time energy monitoring system for households, using current sensors and a cloud-based platform to track and analyze power consumption. The system provides actionable insights to reduce energy costs by up to 20%.",
-                "techStack": [
-                    { "icon": "fa-plug", "name": "Energy Sensors" },
-                    { "icon": "fa-cloud", "name": "Cloud Computing" },
-                    { "icon": "fa-chart-line", "name": "Data Analytics" },
-                    { "icon": "fa-home", "name": "Smart Home" }
+                title: "Thorana Automation System",
+                subtitle: "Mechanical & Electrical Welcome Display",
+                description: "Developed an automated Thorana featuring a peacock with moving wings and neck using a high-torque wiper motor controlled via a custom H-bridge made from relays. Integrated limit switches ensure safe wing movement limits. Created synchronized light patterns using multi-channel relay modules and rotating gear icons driven by DC motors to enhance the visual impact and welcome experience for the faculty juniors.",
+                techStack: [
+                    { icon: "fa-motor", name: "DC & Wiper Motors" },
+                    { icon: "fa-microchip", name: "Relay Control" },
+                    { icon: "fa-cogs", name: "Mechanical Design" },
+                    { icon: "fa-lightbulb", name: "Lighting Systems" }
                 ],
-                "features": [
-                    "Non-invasive current sensors for easy installation",
-                    "Real-time energy usage tracking",
-                    "Cloud dashboard with historical data and trends",
-                    "Alerts for abnormal consumption patterns",
-                    "Integration with smart home ecosystems"
+                features: [
+                    "High torque motor control for heavy peacock wings",
+                    "Custom H-bridge with relay modules for motor direction",
+                    "Limit switches for mechanical safety and precision",
+                    "Synchronized lighting patterns for visual effect",
+                    "Rotating gear icons powered by DC motors"
                 ],
                 "headerImage": "/api/placeholder/900/400?text=Energy+Monitor",
                 "gallery": [
@@ -2005,21 +2018,21 @@
             },
             {
                 "id": "project10",
-                "title": "Autonomous Drone Navigation",
-                "subtitle": "Intelligent Flight Systems",
-                "description": "Engineered a drone with autonomous navigation capabilities using GPS and computer vision. The drone follows predefined waypoints and avoids obstacles, suitable for applications like aerial mapping and surveillance.",
-                "techStack": [
-                    { "icon": "fa-drone", "name": "Drones" },
-                    { "icon": "fa-camera", "name": "Computer Vision" },
-                    { "icon": "fa-map-marker-alt", "name": "GPS Navigation" },
-                    { "icon": "fa-brain", "name": "Autonomous Systems" }
+                title: "Power Backup System with Solar and Lead-Acid Battery",
+                subtitle: "Hybrid Energy Backup Solution",
+                description: "Developed a reliable power backup system combining a 700VA UPS, 90Ah lead-acid battery, and 100W solar panel with charge controller. The system includes an external current-controlled SMPS charger for cloudy days, and a low voltage cutoff at 11.7V to protect battery life. This design ensures continuous power supply during outages, optimizes battery health, and integrates eco-friendly solar charging for sustainable energy use.",
+                techStack: [
+                    { icon: "fa-solar-panel", name: "Solar Energy" },
+                    { icon: "fa-battery-half", name: "Battery Management" },
+                    { icon: "fa-plug", name: "UPS Integration" },
+                    { icon: "fa-cogs", name: "Power Electronics" }
                 ],
-                "features": [
-                    "GPS-based waypoint navigation",
-                    "Real-time obstacle detection and avoidance",
-                    "Onboard camera for visual processing",
-                    "Custom flight control software",
-                    "Data logging for post-flight analysis"
+                features: [
+                    "Hybrid charging from solar panel and SMPS power supply",
+                    "Low voltage cutoff to extend lead-acid battery life",
+                    "Seamless UPS power backup during outages",
+                    "Battery charge monitoring and protection",
+                    "Eco-friendly and cost-effective energy solution"
                 ],
                 "headerImage": "/api/placeholder/900/400?text=Autonomous+Drone",
                 "gallery": [
@@ -2031,21 +2044,21 @@
             },
             {
                 "id": "project11",
-                "title": "Wearable Health Tracker",
-                "subtitle": "Personal Wellness Technology",
-                "description": "Created a wearable device to monitor heart rate, activity, and sleep patterns, with Bluetooth connectivity to a mobile app. The system provides real-time health insights and personalized recommendations for users.",
+                "title": "AIWA LCX-K277 Modern Audio Upgrade",
+                "subtitle": "Raspberry Pi 3B + Volumio Audio Player",
+                "description": "Converted the classic AIWA LCX-K277 stereo into a modern high-quality audio system using Raspberry Pi 3B and Volumio. This upgrade enables streaming from Spotify, TIDAL, and web radios, supports high-resolution audio formats, and allows control via smartphone or PC. The system uses a DAC for superior sound and retains the original amplifier and speakers for rich audio experience.",
                 "techStack": [
-                    { "icon": "fa-heartbeat", "name": "Health Sensors" },
-                    { "icon": "fa-bluetooth", "name": "Bluetooth" },
-                    { "icon": "fa-mobile-alt", "name": "Mobile App" },
-                    { "icon": "fa-user-md", "name": "Health Tech" }
+                    { "icon": "fa-raspberry-pi", "name": "Raspberry Pi 3B" },
+                    { "icon": "fa-music", "name": "Volumio" },
+                    { "icon": "fa-usb", "name": "USB DAC" },
+                    { "icon": "fa-network-wired", "name": "Wi-Fi Networking" }
                 ],
                 "features": [
-                    "Continuous heart rate and activity monitoring",
-                    "Low-power Bluetooth for seamless connectivity",
-                    "Mobile app with health analytics and alerts",
-                    "Ergonomic design for all-day wear",
-                    "Data encryption for user privacy"
+                    "Supports high-resolution audio formats (FLAC, WAV, DSD)",
+                    "Streaming services integration: Spotify, TIDAL, Web Radio",
+                    "Web and mobile app control interface",
+                    "Multi-room playback capability",
+                    "Gapless playback for seamless music experience"
                 ],
                 "headerImage": "/api/placeholder/900/400?text=Health+Tracker",
                 "gallery": [
@@ -2057,21 +2070,21 @@
             },
             {
                 "id": "project12",
-                "title": "Solar-Powered Weather Station",
-                "subtitle": "Sustainable Data Collection",
-                "description": "Constructed a solar-powered weather station to monitor temperature, humidity, and wind speed, with wireless data transmission to a local server. The system operates off-grid, ideal for remote environmental monitoring.",
+                 "title": "Audio-Reactive LED Equalizer with WS2812B",
+                "subtitle": "Music Visualizer Lighting System",
+                "description": "Developed an advanced LED equalizer using WS2812B LED strips controlled by the SP107E module. The system reacts to audio input via microphone and AUX, displaying real-time sound patterns. It features 100 dynamic lighting effects and allows manual RGB color control. Powered efficiently with an LM2596 buck converter, it offers a vibrant, customizable light show synchronized with music beats.",
                 "techStack": [
-                    { "icon": "fa-solar-panel", "name": "Solar Power" },
-                    { "icon": "fa-thermometer-half", "name": "Weather Sensors" },
-                    { "icon": "fa-wifi", "name": "Wireless Communication" },
-                    { "icon": "fa-database", "name": "Data Logging" }
+                    { "icon": "fa-lightbulb", "name": "WS2812B LEDs" },
+                    { "icon": "fa-microchip", "name": "SP107E Controller" },
+                    { "icon": "fa-bolt", "name": "LM2596 Buck Converter" },
+                    { "icon": "fa-music", "name": "Audio Signal Processing" }
                 ],
                 "features": [
-                    "Solar-powered for continuous operation",
-                    "High-accuracy sensors for environmental data",
-                    "Wireless data transmission to a local server",
-                    "Rugged design for outdoor durability",
-                    "Web interface for real-time data access"
+                    "Audio input via mic and AUX for real-time LED visualization",
+                    "100 built-in dynamic light patterns",
+                    "Manual RGB color adjustment",
+                    "Stable 5V power supply with LM2596 buck converter",
+                    "Bluetooth control through mobile app"
                 ],
                 "headerImage": "/api/placeholder/900/400?text=Weather+Station",
                 "gallery": [
